@@ -42,7 +42,7 @@ Bookshelf App is a web application for managing your book collection with an int
 
 ## 💻 Demo
 
-<!-- [Access App Demo](https://your-github-username.github.io/bookshelf-app/) -->
+[Access App Demo](https://amalrivel.github.io/Bookshelf-App-Javascripts/)
 
 ![App Screenshot](https://github.com/user-attachments/assets/edfd5cbf-63ac-4a1d-b649-952bc45e5a1e)
 
