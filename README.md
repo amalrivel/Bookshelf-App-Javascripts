@@ -50,10 +50,10 @@ Bookshelf App is a web application for managing your book collection with an int
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-github-username/bookshelf-app.git
+git clone https://github.com/amalrivel/Bookshelf-App-Javascripts.git
 
 # Open the project directory
-cd bookshelf-app
+cd Bookshelf-App-Javascripts
 
 # Open index.html in your browser
 # or use Live Server extension in VS Code
