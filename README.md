@@ -40,11 +40,11 @@ Bookshelf App is a web application for managing your book collection with an int
    - Click "Edit Book" to update book information
    - Click "Delete Book" to remove the book from your collection
 
-<!-- ## 💻 Demo
+## 💻 Demo
 
-[Access App Demo](https://your-github-username.github.io/bookshelf-app/)
+<!-- [Access App Demo](https://your-github-username.github.io/bookshelf-app/) -->
 
-![App Screenshot](https://via.placeholder.com/800x400?text=Bookshelf+App+Screenshot) -->
+![App Screenshot](https://github.com/user-attachments/assets/edfd5cbf-63ac-4a1d-b649-952bc45e5a1e)
 
 ## 🛠️ Installation and Local Development
 
