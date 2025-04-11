@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf App</title>
+
+    <!-- Impor script kamu di sini -->
+    <!-- Lampirkan `defer` jika pemanggilan dilakukan dalam <head> -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
+    ></script>
+    <script defer type="module" src="script/main.js"></script>
+  </head>
+  <body class="bg-slate-100 min-h-screen">
+    <header class="bg-indigo-700 text-white shadow-lg py-8">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold text-center">Bookshelf App</h1>
+      </div>
+    </header>
+
+    <main class="container max-w-5xl mx-auto px-6 py-10">
+      <section class="mb-12 bg-white p-8 rounded-xl shadow-lg">
+        <h2
+          class="text-2xl font-bold mb-6 text-indigo-800 border-b-2 border-indigo-200 pb-3"
+        >
+          Tambah Buku Baru
+        </h2>
+        <form id="bookForm" data-testid="bookForm" class="space-y-5">
+          <div class="flex flex-col">
+            <label
+              for="bookFormTitle"
+              class="text-sm font-semibold text-gray-800 mb-2"
+              >Judul</label
+            >
+            <input
+              id="bookFormTitle"
+              type="text"
+              required
+              data-testid="bookFormTitleInput"
+              class="border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label
+              for="bookFormAuthor"
+              class="text-sm font-semibold text-gray-800 mb-2"
+              >Penulis</label
+            >
+            <input
+              id="bookFormAuthor"
+              type="text"
+              required
+              data-testid="bookFormAuthorInput"
+              class="border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label
+              for="bookFormYear"
+              class="text-sm font-semibold text-gray-800 mb-2"
+              >Tahun</label
+            >
+            <input
+              id="bookFormYear"
+              type="number"
+              required
+              data-testid="bookFormYearInput"
+              class="border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+          <div class="flex items-center">
+            <input
+              id="bookFormIsComplete"
+              type="checkbox"
+              data-testid="bookFormIsCompleteCheckbox"
+              class="h-5 w-5 text-indigo-600 rounded-md focus:ring-indigo-500 mr-3"
+            />
+            <label
+              for="bookFormIsComplete"
+              class="text-sm font-semibold text-gray-800"
+              >Selesai dibaca</label
+            >
+          </div>
+          <button
+            id="bookFormSubmit"
+            type="submit"
+            data-testid="bookFormSubmitButton"
+            class="w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-800 transition-colors shadow-md"
+          >
+            Masukkan Buku ke rak <span>Belum selesai dibaca</span>
+          </button>
+        </form>
+      </section>
+
+      <section class="mb-12 bg-white p-8 rounded-xl shadow-lg">
+        <h2
+          class="text-2xl font-bold mb-6 text-indigo-800 border-b-2 border-indigo-200 pb-3"
+        >
+          Cari Buku
+        </h2>
+        <form
+          id="searchBook"
+          data-testid="searchBookForm"
+          class="flex flex-wrap gap-3"
+        >
+          <div class="flex-grow">
+            <label for="searchBookTitle" class="sr-only">Judul</label>
+            <input
+              id="searchBookTitle"
+              type="text"
+              data-testid="searchBookFormTitleInput"
+              placeholder="Masukkan judul buku..."
+              class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+          <button
+            id="searchSubmit"
+            type="submit"
+            data-testid="searchBookFormSubmitButton"
+            class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-800 transition-colors shadow-md"
+          >
+            Cari
+          </button>
+        </form>
+      </section>
+
+      <div class="grid md:grid-cols-2 gap-10">
+        <section class="bg-white p-8 rounded-xl shadow-lg">
+          <h2
+            class="text-2xl font-bold mb-6 text-orange-600 border-b-2 border-orange-200 pb-3"
+          >
+            Belum selesai dibaca
+          </h2>
+
+          <div
+            id="incompleteBookList"
+            data-testid="incompleteBookList"
+            class="space-y-5"
+          >
+            <!-- 
+              Ini adalah struktur HTML untuk masing-masing buku.
+              Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
+            -->
+            <div
+              data-bookid="123123123"
+              data-testid="bookItem"
+              class="p-5 border-2 border-orange-200 rounded-lg hover:shadow-md transition-shadow"
+            >
+              <h3
+                data-testid="bookItemTitle"
+                class="text-lg font-bold mb-2 text-gray-900"
+              >
+                Judul Buku 1
+              </h3>
+              <p
+                data-testid="bookItemAuthor"
+                class="text-sm text-gray-700 mb-1"
+              >
+                Penulis: Penulis Buku 1
+              </p>
+              <p data-testid="bookItemYear" class="text-sm text-gray-700 mb-3">
+                Tahun: 2030
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <button
+                  data-testid="bookItemIsCompleteButton"
+                  class="px-3 py-2 text-xs font-medium rounded-lg bg-orange-100 text-orange-700 hover:bg-orange-200 transition-colors"
+                >
+                  Selesai dibaca
+                </button>
+                <button
+                  data-testid="bookItemDeleteButton"
+                  class="px-3 py-2 text-xs font-medium rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition-colors"
+                >
+                  Hapus Buku
+                </button>
+                <button
+                  data-testid="bookItemEditButton"
+                  class="px-3 py-2 text-xs font-medium rounded-lg bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors"
+                >
+                  Edit Buku
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-white p-8 rounded-xl shadow-lg">
+          <h2
+            class="text-2xl font-bold mb-6 text-purple-600 border-b-2 border-purple-200 pb-3"
+          >
+            Selesai dibaca
+          </h2>
+
+          <div
+            id="completeBookList"
+            data-testid="completeBookList"
+            class="space-y-5"
+          >
+            <!-- 
+              Ini adalah struktur HTML untuk masing-masing buku.
+              Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
+            -->
+            <div
+              data-bookid="456456456"
+              data-testid="bookItem"
+              class="p-5 border-2 border-purple-200 rounded-lg hover:shadow-md transition-shadow"
+            >
+              <h3
+                data-testid="bookItemTitle"
+                class="text-lg font-bold mb-2 text-gray-900"
+              >
+                Judul Buku 2
+              </h3>
+              <p
+                data-testid="bookItemAuthor"
+                class="text-sm text-gray-700 mb-1"
+              >
+                Penulis: Penulis Buku 2
+              </p>
+              <p data-testid="bookItemYear" class="text-sm text-gray-700 mb-3">
+                Tahun: 2030
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <button
+                  data-testid="bookItemIsCompleteButton"
+                  class="px-3 py-2 text-xs font-medium rounded-lg bg-purple-100 text-purple-700 hover:bg-purple-200 transition-colors"
+                >
+                  Belum selesai dibaca
+                </button>
+                <button
+                  data-testid="bookItemDeleteButton"
+                  class="px-3 py-2 text-xs font-medium rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition-colors"
+                >
+                  Hapus Buku
+                </button>
+                <button
+                  data-testid="bookItemEditButton"
+                  class="px-3 py-2 text-xs font-medium rounded-lg bg-indigo-100 text-indigo-700 hover:bg-indigo-200 transition-colors"
+                >
+                  Edit Buku
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div
+        id="editBookDialog"
+        class="fixed inset-0 bg-slate-700 bg-opacity-60 hidden flex items-center justify-center z-50"
+      >
+        <div class="bg-white p-8 rounded-xl shadow-2xl max-w-lg w-full mx-5">
+          <h2
+            class="text-2xl font-bold mb-6 text-indigo-800 border-b-2 border-indigo-200 pb-3"
+          >
+            Edit Buku
+          </h2>
+          <form id="editBookForm" data-testid="editBookForm" class="space-y-5">
+            <input type="hidden" id="editBookId" />
+            <div class="flex flex-col">
+              <label
+                for="editBookTitle"
+                class="text-sm font-semibold text-gray-800 mb-2"
+                >Judul</label
+              >
+              <input
+                id="editBookTitle"
+                type="text"
+                required
+                class="border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div class="flex flex-col">
+              <label
+                for="editBookAuthor"
+                class="text-sm font-semibold text-gray-800 mb-2"
+                >Penulis</label
+              >
+              <input
+                id="editBookAuthor"
+                type="text"
+                required
+                class="border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div class="flex flex-col">
+              <label
+                for="editBookYear"
+                class="text-sm font-semibold text-gray-800 mb-2"
+                >Tahun</label
+              >
+              <input
+                id="editBookYear"
+                type="number"
+                required
+                class="border-2 border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+            <div class="flex items-center">
+              <input
+                id="editBookIsComplete"
+                type="checkbox"
+                class="h-5 w-5 text-indigo-600 rounded-md focus:ring-indigo-500 mr-3"
+              />
+              <label
+                for="editBookIsComplete"
+                class="text-sm font-semibold text-gray-800"
+                >Selesai dibaca</label
+              >
+            </div>
+            <div class="flex justify-end space-x-3 pt-2">
+              <button
+                type="button"
+                id="editBookCancel"
+                class="px-5 py-3 bg-slate-200 text-slate-800 font-medium rounded-lg hover:bg-slate-300 transition-colors"
+              >
+                Batal
+              </button>
+              <button
+                type="submit"
+                class="px-5 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+              >
+                Simpan
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
