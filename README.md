@@ -79,7 +79,7 @@ This app was developed as part of the "Frontend Web Development for Beginners" c
 
 ## 📄 License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is open source and available under the [MIT License](https://choosealicense.com/licenses/mit/).
 
 ---
 
